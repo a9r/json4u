@@ -10,8 +10,8 @@ import path from "path";
 // Currently, there are bugs in it that can cause the popover component not work.
 
 // validate environment variables during build
-const jiti = createJiti(fileURLToPath(import.meta.url));
-jiti("./src/lib/env");
+// const jiti = createJiti(fileURLToPath(import.meta.url));
+// jiti("./src/lib/env");
 
 const isDev = process.env.NODE_ENV === "development";
 const isCN = /\.cn(:3000)?$/.test(process.env.NEXT_PUBLIC_APP_URL);
