@@ -23,12 +23,16 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   poweredByHeader: false,
-  output: isCN ? "standalone" : undefined,
+  output: "export",
+  trailingSlash: true,
+  images: {
+    unoptimized: true
+  },
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   experimental: {
-    serverActions: {
-      allowedOrigins: ["json4u.com", "*.json4u.com", "json4u.cn", "*.json4u.cn"],
-    },
+    // serverActions: {
+    //   allowedOrigins: ["json4u.com", "*.json4u.com", "json4u.cn", "*.json4u.cn"],
+    // },
     optimizePackageImports: [
       "react-use",
       "@next/mdx",
