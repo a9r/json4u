@@ -51,7 +51,8 @@ export const useUserStore = create<UserState>()((set, get) => ({
       return true;
     }
 
-    return usage[key] < freeQuota[key];
+    // TODO: free now
+    return true || usage[key] < freeQuota[key];
   },
 
   count(key: StatisticsKeys) {
@@ -85,9 +86,12 @@ export const useUserStore = create<UserState>()((set, get) => ({
   },
 
   async setUser(user: User | null) {
-    const { updateActiveOrder: setActiveOrder } = get();
-    set({ user });
-    await setActiveOrder(user);
+    if (user) {
+      set({ user });
+      await get().updateActiveOrder(user);
+    } else {
+      set(initialStates);
+    }
   },
 
   async updateActiveOrder(user: User | null) {
